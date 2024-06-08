@@ -97,88 +97,35 @@ export default function SharedWishListScreen() {
                     data={data}
                     renderItem={({ item }) =>
                         <View
-                            style={{
-                                minHeight: 50,
-                                backgroundColor: '#FFF',
-                                justifyContent: 'center',
-                                margin: 10,
-                                padding: 10,
-                                borderRadius: 5,
-                            }}
+                            style={styles.item}
                         >
                             <Text
-                                style={{
-                                    fontSize: 15,
-                                }}
+                                style={styles.itemMessage}
                             >
                                 {item.message}
                             </Text>
                         </View>
                     }
                     renderHiddenItem={({ item }) =>
-                        <View style={{
-                            alignItems: 'center',
-                            backgroundColor: '#DDD',
-                            flex: 1,
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            paddingLeft: 15,
-                            margin: 10,
-                            borderRadius: 5,
-                        }}>
+                        <View style={styles.concludedContainer}>
                             <TouchableOpacity
-                                style={{
-                                    alignItems: 'center',
-                                    bottom: 0,
-                                    justifyContent: 'center',
-                                    position: 'absolute',
-                                    top: 0,
-                                    width: 110,
-                                    backgroundColor: '#72BF6A',
-                                    left: 0,
-                                    borderRadius: 5,
-                                }}
+                                style={styles.concludedButton}
                                 onPress={() => markConcluded(item)}
                             >
-                                <Text style={{
-                                    color: '#FFF',
-                                    marginLeft: -10
-                                }}>Concluido</Text>
+                                <Text style={styles.concludedText}>Concluido</Text>
                             </TouchableOpacity>
                         </View>
                     }
                     leftOpenValue={100}
                 />
             }
-            <SafeAreaView style={{
-                position: 'absolute',
-                bottom: 30,
-                right: 5,
-            }}>
+            <SafeAreaView style={styles.buttonContainer}>
                 <TouchableOpacity
-                    style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
+                    style={styles.button}
                     onPress={showDialog}
                 >
                     <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            borderRadius: 25,
-                            backgroundColor: '#6A6A6A',
-                            shadowColor: '#6A6A6A',
-                            shadowOffset: {
-                                width: 0,
-                                height: 10,
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 3.5,
-                            elevation: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
+                        style={styles.buttonIconContainer}
                     >
                         <Ionicons name={'add'} size={35} color={'#FFF'} />
                     </View>
@@ -221,5 +168,66 @@ const styles = StyleSheet.create({
     },
     input: {
         width: "100%",
+    },
+    item: {
+        minHeight: 50,
+        backgroundColor: '#FFF',
+        justifyContent: 'center',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+    },
+    itemMessage: {
+        fontSize: 15,
+    },
+    concludedContainer: {
+        alignItems: 'center',
+        backgroundColor: '#DDD',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 15,
+        margin: 10,
+        borderRadius: 5,
+    },
+    concludedButton: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 0,
+        width: 110,
+        backgroundColor: '#72BF6A',
+        left: 0,
+        borderRadius: 5,
+    },
+    concludedText: {
+        color: '#FFF',
+        marginLeft: -10
+    },
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 30,
+        right: 5,
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonIconContainer: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: '#6A6A6A',
+        shadowColor: '#6A6A6A',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.5,
+        elevation: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
