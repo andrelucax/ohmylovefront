@@ -16,8 +16,9 @@ export function LogoutButton({ navigation }) {
                 text: 'Cancel',
             },
             {
-                text: 'Yes, logout', onPress: () => {
-                    AsyncStorage.removeItem("token");
+                text: 'Yes, logout', onPress: async () => {
+                    await AsyncStorage.removeItem("token");
+                    await AsyncStorage.removeItem("lastMessage")
                     api.defaults.headers.common['Authorization'] = null;
                     navigation.navigate('Login');
                 }
