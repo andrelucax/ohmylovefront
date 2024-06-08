@@ -43,7 +43,7 @@ export default function HomeScreen() {
 
         try {
             const result = await get(
-                "api/message-of-the-day"
+                "api/message-of-the-day/"
             );
 
             await AsyncStorage.setItem("lastMessage", JSON.stringify({
@@ -199,7 +199,7 @@ export default function HomeScreen() {
                     </TouchableWithoutFeedback>
                 </View>
                 <Dialog.Button label="Cancel" onPress={clearCreateFile} />
-                <Dialog.Button label="Enviar" onPress={submitFile} />
+                <Dialog.Button label="Submit" onPress={submitFile} />
             </Dialog.Container>
             <Dialog.Container visible={createMessageVisible}>
                 <Dialog.Title>Create new couple message</Dialog.Title>
@@ -210,7 +210,7 @@ export default function HomeScreen() {
                     </View>
                 </TouchableWithoutFeedback>
                 <Dialog.Button label="Cancel" onPress={clearCreateMessage} />
-                <Dialog.Button label="Enviar" onPress={submitMessage} />
+                <Dialog.Button label="Submit" onPress={submitMessage} />
             </Dialog.Container>
         </SafeAreaView>
     );

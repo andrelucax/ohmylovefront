@@ -22,7 +22,7 @@ export default function SpecialDatesScreen() {
         setLoading(true);
         try {
             const result = await get(
-                "api/couple-specialdates"
+                "api/couple-specialdates/"
             );
             setData(result);
         }
@@ -109,6 +109,7 @@ export default function SpecialDatesScreen() {
                 },
             );
             clearDialog();
+            fetchData();
         }
         catch (e) {
             alert(e);
@@ -179,7 +180,7 @@ export default function SpecialDatesScreen() {
                     </TouchableWithoutFeedback>
                 </View>
                 <Dialog.Button label="Cancel" onPress={clearDialog} />
-                <Dialog.Button label="Enviar" onPress={submitData} />
+                <Dialog.Button label="Submit" onPress={submitData} />
             </Dialog.Container>
         </SafeAreaView>
     );

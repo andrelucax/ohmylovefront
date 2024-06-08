@@ -16,4 +16,9 @@ const post = async (url, data, config = {}) => {
     return response.data;
 };
 
-export { api, get, post };
+const put = async (url, data, config = {}) => {
+    const response = await api.put(url, data, config);
+    return response.data;
+};
+
+export { api, get, post, put };
