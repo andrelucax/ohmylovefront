@@ -6,13 +6,13 @@ const api = axios.create({
     timeout: 10 * 1000,
 });
 
-const get = async (url) => {
-    const response = await api.get(url);
+const get = async (url, config = {}) => {
+    const response = await api.get(url, config);
     return response.data;
 };
 
-const post = async (url, data) => {
-    const response = await api.post(url, data);
+const post = async (url, data, config = {}) => {
+    const response = await api.post(url, data, config);
     return response.data;
 };
 

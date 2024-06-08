@@ -1,4 +1,4 @@
-import { TouchableWithoutFeedback, View, Text, StyleSheet, Alert } from 'react-native';
+import { TouchableWithoutFeedback, TouchableOpacity, View, Text, StyleSheet, Alert } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SpecialDatesScreen from './special-dates'
 import HomeScreen from './home'
@@ -27,9 +27,9 @@ export function LogoutButton({ navigation }) {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={logout}>
+        <TouchableOpacity onPress={logout}>
             <Ionicons name={'exit'} size={25} color={"black"} style={{ marginRight: 20 }} />
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     )
 }
 

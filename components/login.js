@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { SafeAreaView, Text, Image, StyleSheet, View, TextInput, Pressable, ActivityIndicator, TouchableWithoutFeedback } from 'react-native';
+import { SafeAreaView, Text, Image, StyleSheet, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { api, post } from '../api';
 const logo = require("../assets/logo.png")
@@ -81,9 +81,9 @@ export default function LoginScreen({ navigation }) {
                 </TouchableWithoutFeedback>
             </View>
             <View style={styles.buttonView}>
-                <Pressable style={styles.button} onPress={login}>
+                <TouchableOpacity style={styles.button} onPress={login}>
                     <Text style={styles.buttonText}>Login</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );
