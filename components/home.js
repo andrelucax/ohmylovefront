@@ -8,15 +8,20 @@ import * as ImagePicker from 'expo-image-picker';
 
 export default function HomeScreen() {
     const [isLoading, setLoading] = useState(true);
+
     const [imageUrl, setImageUrl] = useState("");
     const [imageName, setImageName] = useState("");
     const [message, setMessage] = useState("");
+
     const [createFileVisible, setCreateFileVisible] = useState(false);
-    const [createMessageVisible, setCreateMessageVisible] = useState(false);
     const [createFileImage, setCreateFileImage] = useState("");
     const [createFileName, setCreateFileName] = useState("");
 
+    const [createMessageVisible, setCreateMessageVisible] = useState(false);
+    const [createMessage, setCreateMessage] = useState("");
+
     const createFileNameInputRef = useRef(null);
+    const createMessageInputRef = useRef(null);
 
     const fetchData = async () => {
         setLoading(true);
@@ -83,7 +88,7 @@ export default function HomeScreen() {
 
         try {
             await post(
-                "api/couple-images/create/",
+                "api/couple-images/",
                 formData,
                 {
                     headers: {
@@ -115,9 +120,36 @@ export default function HomeScreen() {
     }
 
     function clearCreateFile() {
+        setCreateFileVisible(false);
         setCreateFileImage("");
         setCreateFileName("");
-        setCreateFileVisible(false);
+    }
+
+    function clearCreateMessage() {
+        setCreateMessageVisible(false);
+        setCreateMessage("");
+    }
+
+    async function submitMessage() {
+        if (!createMessage) {
+            return;
+        }
+
+        try {
+            await post(
+                "api/couple-messages/",
+                {
+                    message: createMessage,
+                },
+            );
+            clearCreateMessage();
+        }
+        catch (e) {
+            alert(e);
+        }
+        finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -168,6 +200,17 @@ export default function HomeScreen() {
                 </View>
                 <Dialog.Button label="Cancel" onPress={clearCreateFile} />
                 <Dialog.Button label="Enviar" onPress={submitFile} />
+            </Dialog.Container>
+            <Dialog.Container visible={createMessageVisible}>
+                <Dialog.Title>Create new couple message</Dialog.Title>
+                <TouchableWithoutFeedback onPress={() => createMessageInputRef.current.focus()}>
+                    <View style={styles.inputContainer}>
+                        <Text>Message</Text>
+                        <TextInput ref={createMessageInputRef} style={styles.input} value={createMessage} onChangeText={setCreateMessage} autoCorrect={false} autoCapitalize='none' />
+                    </View>
+                </TouchableWithoutFeedback>
+                <Dialog.Button label="Cancel" onPress={clearCreateMessage} />
+                <Dialog.Button label="Enviar" onPress={submitMessage} />
             </Dialog.Container>
         </SafeAreaView>
     );
