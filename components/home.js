@@ -88,7 +88,7 @@ export default function HomeScreen() {
 
         try {
             await post(
-                "api/couple-images/",
+                "api/couple-images/create/",
                 formData,
                 {
                     headers: {
@@ -137,7 +137,7 @@ export default function HomeScreen() {
 
         try {
             await post(
-                "api/couple-messages/",
+                "api/couple-messages/create/",
                 {
                     message: createMessage,
                 },
@@ -297,5 +297,5 @@ const styles = StyleSheet.create({
     },
     inputView: {
         gap: 20,
-    }
+    },
 });
