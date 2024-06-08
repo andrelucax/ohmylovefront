@@ -128,33 +128,20 @@ export default function SpecialDatesScreen() {
                     data={data}
                     renderItem={({ item }) =>
                         <View
-                            style={{
-                                minHeight: 50,
-                                backgroundColor: '#FFF',
-                                justifyContent: 'center',
-                                margin: 10,
-                                padding: 10,
-                                borderRadius: 5,
-                            }}
+                            style={styles.item}
                         >
                             <Text
-                                style={{
-                                    fontSize: 22,
-                                }}
+                                style={styles.itemName}
                             >
                                 {item.name}
                             </Text>
                             <Text
-                                style={{
-                                    fontSize: 15,
-                                }}
+                                style={styles.itemDate}
                             >
                                 {formatDate(item.date)}
                             </Text>
                             <Text
-                                style={{
-                                    fontSize: 12,
-                                }}
+                                style={styles.itemTimeRemaining}
                             >
                                 {formatTimeToDate(item.date)}
                             </Text>
@@ -163,35 +150,13 @@ export default function SpecialDatesScreen() {
                 />
 
             }
-            <SafeAreaView style={{
-                position: 'absolute',
-                bottom: 30,
-                right: 5,
-            }}>
+            <SafeAreaView style={styles.buttonContainer}>
                 <TouchableOpacity
-                    style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
+                    style={styles.button}
                     onPress={showDialog}
                 >
                     <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            borderRadius: 25,
-                            backgroundColor: '#6A6A6A',
-                            shadowColor: '#6A6A6A',
-                            shadowOffset: {
-                                width: 0,
-                                height: 10,
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 3.5,
-                            elevation: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
+                        style={styles.buttonIconContainer}
                     >
                         <Ionicons name={'add'} size={35} color={'#FFF'} />
                     </View>
@@ -245,5 +210,47 @@ const styles = StyleSheet.create({
     },
     inputView: {
         gap: 20,
+    },
+    item: {
+        minHeight: 50,
+        backgroundColor: '#FFF',
+        justifyContent: 'center',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+    },
+    itemName: {
+        fontSize: 22,
+    },
+    itemDate: {
+        fontSize: 15,
+    },
+    itemTimeRemaining: {
+        fontSize: 12,
+    },
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 30,
+        right: 5,
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonIconContainer: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: '#6A6A6A',
+        shadowColor: '#6A6A6A',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.5,
+        elevation: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
