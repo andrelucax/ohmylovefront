@@ -43,6 +43,10 @@ export default function SharedWishListScreen() {
     };
 
     const submitData = async () => {
+        if (!name) {
+            return;
+        }
+
         setLoading(true);
         try {
             await post(
@@ -132,11 +136,11 @@ export default function SharedWishListScreen() {
                 </TouchableOpacity>
             </SafeAreaView>
             <Dialog.Container visible={visible}>
-                <Dialog.Title>Adicionar novo item a lista de desejos</Dialog.Title>
+                <Dialog.Title style={styles.dialogTitle}>Adicionar novo item a lista de desejos</Dialog.Title>
                 <TouchableWithoutFeedback onPress={() => inputRef.current.focus()}>
                     <View style={styles.inputContainer}>
                         <Text>Message</Text>
-                        <TextInput ref={inputRef} style={styles.input} value={name} onChangeText={setName} autoCorrect={false} autoCapitalize='none' />
+                        <TextInput ref={inputRef} style={styles.input} value={name} onChangeText={setName} autoCorrect={false} />
                     </View>
                 </TouchableWithoutFeedback>
                 <Dialog.Button label="Cancel" onPress={clearDialog} />
@@ -229,5 +233,8 @@ const styles = StyleSheet.create({
         elevation: 5,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    dialogTitle: {
+        color: 'black',
     },
 });

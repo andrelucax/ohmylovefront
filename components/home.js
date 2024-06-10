@@ -86,6 +86,7 @@ export default function HomeScreen() {
         });
         formData.append('name', createFileName);
 
+        setLoading(true);
         try {
             await post(
                 "api/couple-images/create/",
@@ -135,6 +136,7 @@ export default function HomeScreen() {
             return;
         }
 
+        setLoading(true);
         try {
             await post(
                 "api/couple-messages/create/",
@@ -188,7 +190,7 @@ export default function HomeScreen() {
                 </ScrollView>
             }
             <Dialog.Container visible={createFileVisible}>
-                <Dialog.Title>Create new couple file</Dialog.Title>
+                <Dialog.Title style={styles.dialogTitle}>Create new couple file</Dialog.Title>
                 <View style={styles.inputView}>
                     <TouchableOpacity onPress={pickImage}><Text style={styles.pickImage}>{createFileImage ? "Change image" : "Pick image"}</Text></TouchableOpacity>
                     <TouchableWithoutFeedback onPress={() => createFileNameInputRef.current.focus()}>
@@ -202,7 +204,7 @@ export default function HomeScreen() {
                 <Dialog.Button label="Submit" onPress={submitFile} />
             </Dialog.Container>
             <Dialog.Container visible={createMessageVisible}>
-                <Dialog.Title>Create new couple message</Dialog.Title>
+                <Dialog.Title style={styles.dialogTitle}>Create new couple message</Dialog.Title>
                 <TouchableWithoutFeedback onPress={() => createMessageInputRef.current.focus()}>
                     <View style={styles.inputContainer}>
                         <Text>Message</Text>
@@ -297,5 +299,8 @@ const styles = StyleSheet.create({
     },
     inputView: {
         gap: 20,
+    },
+    dialogTitle: {
+        color: 'black',
     },
 });

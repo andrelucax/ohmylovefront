@@ -100,6 +100,7 @@ export default function SpecialDatesScreen() {
             return;
         }
 
+        setLoading(true);
         try {
             await post(
                 "api/couple-specialdates/create/",
@@ -164,12 +165,12 @@ export default function SpecialDatesScreen() {
                 </TouchableOpacity>
             </SafeAreaView>
             <Dialog.Container visible={visible}>
-                <Dialog.Title>Create new couple special date</Dialog.Title>
+                <Dialog.Title style={styles.dialogTitle}>Create new couple special date</Dialog.Title>
                 <View style={styles.inputView}>
                     <TouchableWithoutFeedback onPress={() => nameInputRef.current.focus()}>
                         <View style={styles.inputContainer}>
                             <Text>Name</Text>
-                            <TextInput ref={nameInputRef} style={styles.input} value={name} onChangeText={setName} autoCorrect={false} autoCapitalize='none' />
+                            <TextInput ref={nameInputRef} style={styles.input} value={name} onChangeText={setName} autoCorrect={false} />
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => dateInputRef.current.focus()}>
@@ -253,5 +254,8 @@ const styles = StyleSheet.create({
         elevation: 5,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    dialogTitle: {
+        color: 'black',
     },
 });
