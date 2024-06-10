@@ -1,6 +1,6 @@
 
 const constants = {
-    siteEndpoint: "http://192.168.2.8:8000",
+    siteEndpoint: "https://ohmylove.andrelucax.com",
 };
 
 export default constants;

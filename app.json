@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "oh-my-love",
+    "name": "Oh my Love!",
     "slug": "oh-my-love",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.andrelucax.ohmylove"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "01b6e598-6426-43d3-9fff-2daa9cf97e1a"
+      }
     }
   }
 }
