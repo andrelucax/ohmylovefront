@@ -4,6 +4,9 @@ import Constants from './constants'
 const api = axios.create({
     baseURL: Constants.siteEndpoint,
     timeout: 10 * 1000,
+    headers: {
+        'Accept-Encoding': '*/*'
+    },
 });
 
 const get = async (url, config = {}) => {
