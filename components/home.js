@@ -7,7 +7,7 @@ import Dialog from "react-native-dialog";
 import * as ImagePicker from 'expo-image-picker';
 
 export default function HomeScreen() {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
 
     const [imageUrl, setImageUrl] = useState("");
     const [imageName, setImageName] = useState("");
@@ -201,7 +201,7 @@ export default function HomeScreen() {
                     </TouchableWithoutFeedback>
                 </View>
                 <Dialog.Button label="Cancel" onPress={clearCreateFile} />
-                <Dialog.Button label="Submit" onPress={submitFile} />
+                <Dialog.Button label="Submit" disabled={isLoading} onPress={submitFile} />
             </Dialog.Container>
             <Dialog.Container visible={createMessageVisible}>
                 <Dialog.Title style={styles.dialogTitle}>Create new couple message</Dialog.Title>
@@ -212,7 +212,7 @@ export default function HomeScreen() {
                     </View>
                 </TouchableWithoutFeedback>
                 <Dialog.Button label="Cancel" onPress={clearCreateMessage} />
-                <Dialog.Button label="Submit" onPress={submitMessage} />
+                <Dialog.Button label="Submit" disabled={isLoading} onPress={submitMessage} />
             </Dialog.Container>
         </SafeAreaView>
     );

@@ -6,7 +6,7 @@ import Dialog from "react-native-dialog";
 import { get, post, put } from '../api';
 
 export default function SharedWishListScreen() {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [visible, setVisible] = useState(false);
     const [name, setName] = useState("");
@@ -144,7 +144,7 @@ export default function SharedWishListScreen() {
                     </View>
                 </TouchableWithoutFeedback>
                 <Dialog.Button label="Cancel" onPress={clearDialog} />
-                <Dialog.Button label="Submit" onPress={submitData} />
+                <Dialog.Button label="Submit" disabled={isLoading} onPress={submitData} />
             </Dialog.Container>
         </SafeAreaView>
     );

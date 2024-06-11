@@ -5,7 +5,7 @@ import { Ionicons } from 'react-native-vector-icons';
 import Dialog from "react-native-dialog";
 
 export default function SpecialDatesScreen() {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [visible, setVisible] = useState(false);
     const [date, setDate] = useState("");
@@ -181,7 +181,7 @@ export default function SpecialDatesScreen() {
                     </TouchableWithoutFeedback>
                 </View>
                 <Dialog.Button label="Cancel" onPress={clearDialog} />
-                <Dialog.Button label="Submit" onPress={submitData} />
+                <Dialog.Button label="Submit" disabled={isLoading} onPress={submitData} />
             </Dialog.Container>
         </SafeAreaView>
     );
