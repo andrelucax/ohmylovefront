@@ -173,19 +173,21 @@ export default function HomeScreen() {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.imageContainer}>
+                        {!imageUrl ? <></> :
                         <ImageBackground
-                            style={styles.image}
-                            source={{
-                                uri: imageUrl,
-                            }}
-                        >
-                            <Text style={styles.message}>
-                                {message}
-                            </Text>
-                            <Text style={styles.imageName}>
-                                {imageName}
-                            </Text>
-                        </ImageBackground>
+                        style={styles.image}
+                        source={{
+                            uri: imageUrl,
+                        }}
+                    >
+                        <Text style={styles.message}>
+                            {message}
+                        </Text>
+                        <Text style={styles.imageName}>
+                            {imageName}
+                        </Text>
+                    </ImageBackground>
+                        }
                     </View>
                 </ScrollView>
             }

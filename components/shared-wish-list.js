@@ -93,7 +93,7 @@ export default function SharedWishListScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {isLoading ? <ActivityIndicator size="large" /> :
+            {isLoading ? <ActivityIndicator style={styles.loading} size="large" /> :
                 <SwipeListView
                     refreshControl={
                         <RefreshControl onRefresh={onRefresh} />

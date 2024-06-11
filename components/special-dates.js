@@ -122,7 +122,7 @@ export default function SpecialDatesScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {isLoading ? <ActivityIndicator size="large" /> :
+            {isLoading ? <ActivityIndicator style={styles.loading} size="large" /> :
                 <FlatList
                     refreshControl={
                         <RefreshControl onRefresh={onRefresh} />
